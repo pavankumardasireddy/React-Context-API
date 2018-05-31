@@ -36,7 +36,7 @@ context API is similar to redux. It stores data in provider and we can access th
 --> The child of a consumer will always be a function.
     eg: <MyContext.Consumer>
           {(value)=> (
-            <p>Im in consumer</p>
+            <p>Im {value.state.name}</p>
           )}
         </MyContext.Consumer>
 

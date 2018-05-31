@@ -9,13 +9,18 @@ const MyContext = React.createContext();
 class MyProvider extends Component {
   state={
     name:"Pavan kumar Dasireddy",
-    age:"23",
-    designation:"Fullstack Developer"
+    liked:true
   }
   render() {
     return (
       <MyContext.Provider value={{
-        state:this.state
+        state:this.state,
+        likedIt: () => this.setState({
+            liked:true
+          }),
+        dislikedIt: () => this.setState({
+            liked:false
+          })
       }}>
         {this.props.children}
       </MyContext.Provider>
@@ -37,8 +42,17 @@ class Person extends Component {
         <MyContext.Consumer>
           {(context) => (
             <React.Fragment>
-              <p>Hey!! I'm Mr. {context.state.name}  </p>
-              <p>I'm a  {context.state.designation}  </p>
+              <p>Hey!! Im Mr. {context.state.name}  </p><br />
+              <p>How was the context API. Do you like it? </p><br />
+              <div className="row">
+                <button type="button" onClick={context.likedIt} >Like!</button>
+                <button type="button" onClick={context.dislikedIt}>Dislike!</button>
+              </div>
+              <div>                
+                  {
+                    (context.state.liked)?(<h2>Liked It.</h2>):(<h2>No I dont like it.</h2>)
+                  }
+              </div>
             </React.Fragment>
           )}
         </MyContext.Consumer>        
@@ -51,8 +65,7 @@ class App extends Component {
   render() {
     return (
       <MyProvider>
-        <div>
-          <p>Hey! I'm App</p>
+        <div style={{textAlign:"center", paddingTop:"125px"}}>
           <Family/>
         </div>
       </MyProvider>      

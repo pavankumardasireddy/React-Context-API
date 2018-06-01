@@ -40,4 +40,6 @@ context API is similar to redux. It stores data in provider and we can access th
           )}
         </MyContext.Consumer>
 
---> 
+---------------------------------------------------------
+To build a Chrome Extension with React JS: 
+https://engineering.musefind.com/how-to-build-a-chrome-extension-with-react-js-e2bae31747fc
